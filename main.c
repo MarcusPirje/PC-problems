@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+//3.2
 
 int main(void) {
     double x,  y, z;
