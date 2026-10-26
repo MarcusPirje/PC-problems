@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/Marcus/CLionProjects/L4Tema/cmake-build-debug",
+  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.3\\bin\\mingw\\bin\\gcc.exe -g -fdiagnostics-color=always -o CMakeFiles\\L4Tema.dir\\main.c.obj -c C:\\Users\\Marcus\\CLionProjects\\L4Tema\\main.c",
+  "file": "C:/Users/Marcus/CLionProjects/L4Tema/main.c",
+  "output": "C:/Users/Marcus/CLionProjects/L4Tema/cmake-build-debug/CMakeFiles/L4Tema.dir/main.c.obj"
+}
+]
