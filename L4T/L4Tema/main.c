@@ -5,6 +5,10 @@
 //
 // }
 
+// int conversie_baze(int b, double n) {
+
+// }
+
 int main(void) {
     // //3.12
     // int n, x, i, a;
@@ -76,7 +80,7 @@ int main(void) {
     //         s += p[i];
     //         chestionar[nr++] = p[i];
     //         j = i + 1;
-    //         if (p[j] + s < b && nr < q) {
+    //         while (p[j] + s < b && nr < q) {
     //             s += p[j];
     //             chestionar[nr++] = j;
     //         }
@@ -98,96 +102,188 @@ int main(void) {
     //     }
     // }
 
-    //3.15
-    int n, m, a, b, i, j, k, s1[10000], s2[10000], r[10000];
-    printf("Dim. sir 1 si 2 = ");
-    scanf("%d %d", &n, &m);
+    // //3.15
+    // int n, m, a, b, i, j, k, s1[10000], s2[10000], r[10000];
+    // printf("Dim. sir 1 si 2 = ");
+    // scanf("%d %d", &n, &m);
+    //
+    // printf("Valori sir 1 = ");
+    // for (i = 0; i < n; ++i)
+    //     scanf("%d", &s1[i]);
+    //
+    // printf("Valori sir 2 = ");
+    // for (i = 0; i < m; ++i)
+    //     scanf("%d", &s2[i]);
+    //
+    // //ordonam cele 2 siruri
+    // int x;
+    // for (i = 1; i < n; ++i) {
+    //     x = s1[i];
+    //     for (j = i-1; j >= 0 && s1[j] > x; --j)
+    //         s1[j+1] = s1[j];
+    //     s1[j+1] = x;
+    // }
+    // for (i = 1; i < m; ++i) {
+    //     x = s2[i];
+    //     for (j = i-1; j >= 0 && s2[j] > x; --j)
+    //         s2[j+1] = s2[j];
+    //     s2[j+1] = x;
+    // }
+    //
+    // //a
+    // i = 0, j = 0, k = 0;
+    // while (i < n && j < m) {
+    //     if (s1[i] == s2[j]) {
+    //         r[k] = s1[i];
+    //         while (i < n && s1[i] == r[k]) ++i;
+    //         while (j < m && s2[j] == r[k]) ++j;
+    //         ++k;
+    //     }
+    //     else if (s1[i] < s2[j])
+    //         while (i < n && s1[i] < s2[j]) ++i;
+    //     else
+    //         while (j < m && s1[i] > s2[j]) ++j;
+    // }
+    //
+    // printf("Intersectia sirurilor este: ");
+    // for (i = 0; i < k; ++i)
+    //     printf("%d ", r[i]);
+    //
+    // //b
+    // k = i = j = 0;
+    // while (i < n && j < m) { //punem mereu valoarea cea mai mica
+    //     if (s1[i] <= s2[j]) {
+    //         r[k] = s1[i];
+    //         while (i < n && s1[i] == r[k]) ++i;
+    //         while (j < m && s2[j] == r[k]) ++j;
+    //         ++k;
+    //     }
+    //     else {
+    //         r[k] = s2[j];
+    //         while (j < m && s2[j] == r[k]) ++j;
+    //         ++k;
+    //     }
+    //
+    // }
+    //
+    // printf("\nReuniunea sirurilor este: ");
+    // for (i = 0; i < k; ++i)
+    //     printf("%d ", r[i]);
+    //
+    // //c
+    // i = j = k = 0;
+    // while (i < n && j < m) {
+    //     if (s1[i] == s2[j]) {
+    //         x = s1[i];
+    //         while (i < n && s1[i] == x) ++i;
+    //         while (j < m && s2[i] == x) ++j;
+    //     }
+    //     else if (s1[i] < s2[j]) {
+    //         r[k] = s1[i];
+    //         while (i < n && s1[i] == r[k]) ++i;
+    //         ++k;
+    //     }
+    //     else
+    //         while (j < m && s2[j] < s1[i]) ++j;
+    // }
+    // while (i < n)
+    //     r[k++] = s1[i++];
+    //
+    // printf("\nDiferenta sirurilor este: ");
+    // for (i = 0; i < k; ++i)
+    //     printf("%d ", r[i]);
 
-    printf("Valori sir 1 = ");
-    for (i = 0; i < n; ++i)
-        scanf("%d", &s1[i]);
+    //3.16
+    double x;
+    int b;
+    char r[10] = "";
+    printf("Nr = ");
+    scanf("%lf", &x);
 
-    printf("Valori sir 2 = ");
-    for (i = 0; i < m; ++i)
-        scanf("%d", &s2[i]);
+    rescrie:
+    printf("%sBaza = ", r);
+    scanf("%d", &b);
 
-    //ordonam cele 2 siruri
-    int x;
-    for (i = 1; i < n; ++i) {
-        x = s1[i];
-        for (j = i-1; j >= 0 && s1[j] > x; --j)
-            s1[j+1] = s1[j];
-        s1[j+1] = x;
+    if (b > 16) {
+        printf("Baza e prea mare\n");
+        sscanf("Rescrie ", "%s", &r);
+        goto rescrie;
     }
-    for (i = 1; i < m; ++i) {
-        x = s2[i];
-        for (j = i-1; j >= 0 && s2[j] > x; --j)
-            s2[j+1] = s2[j];
-        s2[j+1] = x;
+
+    int a[100], i = 0, f[15], j = 0, c;
+    int parteintreaga = (int)x;
+    double fract = x - parteintreaga;
+    if (10 > b) {
+
+        while (parteintreaga != 0) {
+            a[i++] = parteintreaga % b;
+            parteintreaga /= b;
+        }
+        while (fract != 0 && j < 15) {
+            fract *= b;
+            f[j] = (int)(fract);
+            fract = fract - f[j];
+            ++j;
+        }
+
+        printf("Numarul in baza %d este: \n", b);
+        for (int k = i-1; k >= 0; --k)
+            printf("%d", a[k]);
+        if (j > 0)
+            printf(".");
+        for (int k = 0; k < j; ++k)
+            printf("%d", f[k]);
     }
+    else {
+        i = -1;
+        int poz = 0, putere = 1;
+        while (parteintreaga != 0) {
+            putere = 1, poz = 0;
+            while (parteintreaga / b >= putere) {
+                putere *= b;
+                poz++;
+            }
 
-    //a
-    i = 0, j = 0, k = 0;
-    while (i < n && j < m) {
-        if (s1[i] == s2[j]) {
-            r[k] = s1[i];
-            while (i < n && s1[i] == r[k]) ++i;
-            while (j < m && s2[j] == r[k]) ++j;
-            ++k;
+            for (j = b-1; j > 0; --j)
+                if (parteintreaga / j >= putere) {
+                    a[poz] = j;
+                    break;
+                }
+
+            if (i == -1)
+                i = poz;
+
+            parteintreaga -= putere*j;
         }
-        else if (s1[i] < s2[j]) 
-            while (i < n && s1[i] < s2[j]) ++i;
-        else 
-            while (j < m && s1[i] > s2[j]) ++j;
+
+        //partea fractionara
+        for (j = 0; j < 7 ; ++j)
+            fract *= b;
+
+        int fractint = (int)(fract);
+        j = 0;
+        while (fractint != 0) {
+            f[j++] = fractint % b;
+            fractint /= b;
+        }
+
+        printf("Numarul scris in baza %d este: \n", b);
+        for (int k = i; k >= 0; --k)
+            if (a[k] < 10)
+                printf("%d", a[k]);
+            else {
+                printf("%c", 'A'+(a[k]%10));
+            }
+        if (j > 0)
+            printf(".");
+        for (int k = j-1; k >= 0; --k) {
+            if (f[k] < 10)
+                printf("%d", f[k]);
+            else {
+                printf("%c", 'A'+(f[k]%10));
+            }
+        }
     }
-
-    printf("Intersectia sirurilor este: ");
-    for (i = 0; i < k; ++i) 
-        printf("%d ", r[i]);
-
-    //b
-    k = i = j = 0;
-    while (i < n && j < m) { //punem mereu valoarea cea mai mica
-        if (s1[i] <= s2[j]) {
-            r[k] = s1[i];
-            while (i < n && s1[i] == r[k]) ++i;
-            while (j < m && s2[j] == r[k]) ++j;
-            ++k;
-        }
-        else {
-            r[k] = s2[j];
-            while (j < m && s2[j] == r[k]) ++j;
-            ++k;
-        }
-
-    }
-
-    printf("\nReuniunea sirurilor este: ");
-    for (i = 0; i < k; ++i)
-        printf("%d ", r[i]);
-
-    //c
-    i = j = k = 0;
-    while (i < n && j < m) {
-        if (s1[i] == s2[j]) {
-            x = s1[i];
-            while (i < n && s1[i] == x) ++i;
-            while (j < m && s2[i] == x) ++j;
-        }
-        else if (s1[i] < s2[j]) {
-            r[k] = s1[i];
-            while (i < n && s1[i] == r[k]) ++i;
-            ++k;
-        }
-        else
-            while (j < m && s2[j] < s1[i]) ++j;
-    }
-    while (i < n)
-        r[k++] = s1[i++];
-
-    printf("\nDiferenta sirurilor este: ");
-    for (i = 0; i < k; ++i)
-        printf("%d ", r[i])
 
     return 0;
 }
